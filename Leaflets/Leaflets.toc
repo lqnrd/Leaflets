@@ -1,0 +1,23 @@
+## Interface: 110205
+## Author: lqnrd
+## Title: Leaflets
+## Version: 0.4b
+## SavedVariables: LeafletsOptions
+## Notes: Leaflets
+
+Libs\LibStub\LibStub.lua
+
+# https://github.com/WoWUIDev/Ace3
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\AceComm-3.0\AceComm-3.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceSerializer-3.0\AceSerializer-3.0.xml
+
+# https://github.com/safeteeWow/LibDeflate
+Libs\LibDeflate\lib.xml
+# https://github.com/rossnichols/LibSerialize
+Libs\LibSerialize\lib.xml
+
+AceGUIWidget-LeafletsListButton.lua
+Leaflets.lua
