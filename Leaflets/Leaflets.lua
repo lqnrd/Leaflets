@@ -92,7 +92,7 @@ end
 local nextLeafletFramesCounter = 1
 local function addLeafletBaseFrame(leaflet)
   if not leafletFrames[leaflet.id] then
-    local f = CreateFrame("Frame", "LeafletFrame_"..nextLeafletFramesCounter, UIParent)
+    local f = CreateFrame("Frame", "LeafletFrame_"..nextLeafletFramesCounter, UIParent, "BackdropTemplate")
     f:SetPoint("CENTER")
     f:SetSize(100, 100)
     nextLeafletFramesCounter = nextLeafletFramesCounter + 1
@@ -106,6 +106,13 @@ local function addLeafletBaseFrame(leaflet)
     f.texts[1]:SetTextColor(1, 1, 1, 1)
     f.SetText = function(self, ...)
       f.texts[1]:SetText(...)
+    end
+    f.addNewText = function(self)
+      local i = #f.texts + 1
+      f.texts[i] = f:CreateFontString(nil, "OVERLAY", "GameFontNormalOutline")
+      f.texts[i]:SetPoint("CENTER")
+      f.texts[i]:SetText("")
+      f.texts[i]:SetTextColor(1, 1, 1, 1)
     end
 
     f:Hide()
@@ -206,7 +213,9 @@ end
 local function getLeafletFunctionsCache(leafletId)
   if not leafletsFunctionsCache[leafletId] then
     leafletsFunctionsCache[leafletId] = {
-      env = {},
+      env = {
+        Vector2DMixin = Vector2DMixin
+      },
       funcs = {},
       eventGroupFrameFuncs = {
         -- { frame = <frame>, func = <function> }
